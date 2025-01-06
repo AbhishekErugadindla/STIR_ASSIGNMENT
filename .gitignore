@@ -1,5 +1,4 @@
 __pycache__/
 *.pyc
 .env
-chromedriver/
 error_screenshot.png
