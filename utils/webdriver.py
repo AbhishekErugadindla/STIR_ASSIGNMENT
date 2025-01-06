@@ -15,5 +15,5 @@ def setup_driver():
     chrome_options.add_argument('--disable-notifications')
     chrome_options.add_argument('--window-size=1920,1080')
 
-    service = Service('chromedriver/chromedriver-win64/chromedriver.exe')
+    service = Service('chromedriver/chromedriver-win64')
     return webdriver.Chrome(service=service, options=chrome_options)
