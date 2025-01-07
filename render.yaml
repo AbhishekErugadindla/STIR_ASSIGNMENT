@@ -1,12 +1,31 @@
+# services:
+#   - type: web
+#     name: twitter-trends
+#     env: python
+#     buildCommand: pip install -r requirements.txt
+#     startCommand: gunicorn app:app
+#     envVars:
+#       - key: PYTHON_VERSION
+#         value: 3.9.0
+#     buildFilter:
+#       paths:
+#         - requirements.txt
+#         - "**/*.py"
 services:
   - type: web
     name: twitter-trends
     env: python
-    buildCommand: pip install -r requirements.txt
+    buildCommand: |
+      apt-get update && apt-get install -y chromium chromium-driver
+      pip install -r requirements.txt
     startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.0
+        value: 3.12
+      - key: RENDER
+        value: true
+      - key: PYTHONUNBUFFERED
+        value: true
     buildFilter:
       paths:
         - requirements.txt
